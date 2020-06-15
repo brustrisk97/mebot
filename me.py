@@ -197,8 +197,8 @@ def lineBot(op):
                             cctv['Point3'][op.param1] += "\n~" + Name
                             if " " in Name:
                                 nick = Name.split(' ')
-                            goperation(op.param1,op.param2,"Woi sider ","" + "gw santet lu" )
-			goperation(op.param2,op.param3,"Sider mulu sini nimbrung"" + " )
+                            goperation(op.param1,op.param2,"Woi sider","" + "gw santet lu" )
+			nadya.sendMessage(op.param2,"Sider mulu sini nimbrung"" + " )
                     else:
                         pass
                 else:
