@@ -951,9 +951,9 @@ while True:
         logError(e)
 #==============================================================================#
 if op.type == 65:
-            if settings["unsendMessage"] == True:
+            if settings["unsendcht on"] == True:
+	    nadya.sendMessage("unsend cht on...")
                 try:
-		  if text.lower() == 'unsendchat on':
                     try:
                         at = op.param1
                         msg_id = op.param2
