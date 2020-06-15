@@ -148,7 +148,7 @@ def helpmessage():
                   "╠➥ Lurking" + "\n" + \
                   "║" + "\n" + \
                   "╠ 〘 Credits By: ©Nadya_TJ™  〙"+"\n"+\
-                  "╚═〘 Mdified By: sean.makuto  〙"
+                  "╚═〘 Mdified By: iki doank  〙"
     return helpMessage
 
 def goperation(to, mid, firstmessage, lastmessage):
@@ -198,7 +198,7 @@ def lineBot(op):
                             cctv['Point3'][op.param1] += "\n~" + Name
                             if " " in Name:
                                 nick = Name.split(' ')
-                            goperation(op.param1,op.param2,"Woi ","" + "jangan nyider doang lu" )
+                            goperation(op.param1,op.param2,"Woi sider ","" + "gw santet lu" )
                     else:
                         pass
                 else:
