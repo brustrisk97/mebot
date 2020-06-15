@@ -498,8 +498,8 @@ def lineBot(op):
                                 lists.append(mention["M"])
                         for ls in lists:
                             print(ls)
-                            for x in range(5):
-                                goperation(msg.to,ls,"Woi ","" + "" )
+                            for x in range(20):
+                                goperation(msg.to,ls,"Hei ","" + "" )
                         
 #==============================================================================#
                 elif msg.text.lower().startswith("mimicadd "):
