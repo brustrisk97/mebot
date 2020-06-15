@@ -923,7 +923,8 @@ def lineBot(op):
                                 break
 #==============================================================================#
         if op.type == 55:
-            print ("[ 55 ] NOTIFIED READ MESSAGE")                                   
+            print ("[ 55 ] NOTIFIED READ MESSAGE")
+		if text.lower() == 'unsend on':
             try:
                 if op.param1 in read['readPoint']:
                     if op.param2 in read['readMember'][op.param1]:
