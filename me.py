@@ -498,7 +498,7 @@ def lineBot(op):
                                 lists.append(mention["M"])
                         for ls in lists:
                             print(ls)
-                            for x in range(20):
+                            for x in range(5):
                                 goperation(msg.to,ls,"Hei ","" + "" )
                         
 #==============================================================================#
@@ -953,6 +953,7 @@ while True:
 if op.type == 65:
             if settings["unsendMessage"] == True:
                 try:
+		  if text.lower() == 'unsendchat on':
                     try:
                         at = op.param1
                         msg_id = op.param2
