@@ -198,6 +198,7 @@ def lineBot(op):
                             if " " in Name:
                                 nick = Name.split(' ')
                             goperation(op.param1,op.param2,"Woi sider ","" + "gw santet lu" )
+			goperation(op.param1,op.param2,"Sider mulu ","sini nimbrung"" + " )
                     else:
                         pass
                 else:
@@ -803,7 +804,7 @@ def lineBot(op):
                         nadya.sendMessage(to, 'Success kick members, totals %i members' % len(mentions['MENTIONEES']))
                     else:
                         nadya.sendMessage(to, 'Failed kick member, please mention user you want to kick')  
-                elif msg.text.lower()=="sider on"                                                            :
+                elif msg.text.lower()=="liat sider"                                                            :
                     try:
                         del cctv['Point2'][to]
                         del cctv['Point3'][to]
@@ -813,11 +814,11 @@ def lineBot(op):
                     cctv['Point2'][to] = msg.id
                     cctv['Point3'][to] = ""
                     cctv['Point1'][to]=True
-                    nadya.sendMessage(to,"Sider Set to On..")
-                elif msg.text.lower() == 'sider off':                    
+                    nadya.sendMessage(to,"mengecek sider..")
+                elif msg.text.lower() == 'ga liat sider':                    
                     if to in cctv['Point2']:
                         cctv['Point1'][to]=False
-                        nadya.sendMessage(to, "Sider set ot off...")
+                        nadya.sendMessage(to, "mematikan cek sider....")
                     else:
                         nadya.sendMessage(to, "Off not Going")
                 elif msg.text.lower()=='updatevidp':  
