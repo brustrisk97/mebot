@@ -992,8 +992,7 @@ if op.type == 65:
                                 ret_ += "\nSticker Version : {}".format(str(msg_dict[msg_id]["contentMetadata"]["STKVER"]))
                                 ret_ += "\nWait For View Image"
                                 sendMention(at, str(ret_), [contact.mid])
-                                client.sendImageWithURL(at, "https://stickershop.line-scdn.net/stickershop/v1/sticker/%7B%7D/ANDROID/sticker.png%22.format(str(msg_dict[msg_id][%22contentMetadata%22][%22STKID%22]))  )
-                            elif msg_dict[msg_id]["contentType"] == 13:
+                                client.sendImageWithURL
                                 ret_ += "\nTipe : {}".format(str(Type._VALUES_TO_NAMES[msg_dict[msg_id]["contentType"]]))
                                 ret_ += "\nContact MID : {}".format(str(msg_dict[msg_id]["contentMetadata"]["mid"]))
                                 ret_ += "\nWait For Contact"
