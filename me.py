@@ -952,7 +952,6 @@ while True:
 #==============================================================================#
 if op.type == 65:
             if settings["unsendcht on"] == True:
-	    nadya.sendMessage("unsend cht on...")
                 try:
                     try:
                         at = op.param1
