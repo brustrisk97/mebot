@@ -922,6 +922,34 @@ def lineBot(op):
                                     sendMessageWithMention(to, contact.mid)
                                 break
 #==============================================================================#
+        if op.type == 55:
+            print ("[ 55 ] NOTIFIED READ MESSAGE")                                   
+            try:
+                if op.param1 in read['readPoint']:
+                    if op.param2 in read['readMember'][op.param1]:
+                        print(str(op.param1))
+                        pass                    
+                    else:
+                        read['readMember'][op.param1] += op.param2                                            
+                    read['ROM'][op.param1][op.param2] = op.param2
+                    backupData()
+                else:
+                   pass
+            except:
+                pass
+    except Exception as error:
+        logError(error)
+while True:
+    try:
+        ops = oepoll.singleTrace(count=50)
+        if ops is not None:
+            for op in ops:
+                # print(str(op))
+                lineBot(op)
+                oepoll.setRevision(op.revision)
+    except Exception as e:
+        logError(e)
+#==============================================================================#
 if op.type == 65:
             if settings["unsendMessage"] == True:
                 try:
@@ -996,31 +1024,4 @@ if op.type == 65:
                     traceback.print_tb(error.__traceback__)
                     print ("[ INFO ] ERROR DETECTED TRYING TO RESTART")
                     restartBot()
-#==============================================================================#
-        if op.type == 55:
-            print ("[ 55 ] NOTIFIED READ MESSAGE")                                   
-            try:
-                if op.param1 in read['readPoint']:
-                    if op.param2 in read['readMember'][op.param1]:
-                        print(str(op.param1))
-                        pass                    
-                    else:
-                        read['readMember'][op.param1] += op.param2                                            
-                    read['ROM'][op.param1][op.param2] = op.param2
-                    backupData()
-                else:
-                   pass
-            except:
-                pass
-    except Exception as error:
-        logError(error)
-while True:
-    try:
-        ops = oepoll.singleTrace(count=50)
-        if ops is not None:
-            for op in ops:
-                # print(str(op))
-                lineBot(op)
-                oepoll.setRevision(op.revision)
-    except Exception as e:
-        logError(e)
+
