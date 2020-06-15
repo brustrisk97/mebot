@@ -922,6 +922,81 @@ def lineBot(op):
                                     sendMessageWithMention(to, contact.mid)
                                 break
 #==============================================================================#
+if op.type == 65:
+            if settings["unsendMessage"] == True:
+                try:
+                    try:
+                        at = op.param1
+                        msg_id = op.param2
+                        if msg_id in msg_dict:
+                            contact = client.getContact(msg_dict[msg_id]["from"])
+                            tz = pytz.timezone("Asia/Makassar")
+                            timeNow = datetime.fromtimestamp(msg_dict[msg_id]["createdTime"], tz=tz)
+                            waktuunsend = datetime.strftime(timeNow,"%H:%M:%S")
+                            ret_ = "[ Unsend Terdeteksi ]"
+                            ret_ += "\nTersangka : @!"
+                            ret_ += "\nTerkirim : {} WITA".format(str(waktuunsend))
+                            ret_ += "\n({} yg lalu)".format(str(timeChange(time.time() - msg_dict[msg_id]["createdTime"])))
+                            if msg_dict[msg_id]["contentType"] == 0:
+                                ret_ += "\nTipe : TEXT"
+                                ret_ += "\nTeks : {}".format(str(msg_dict[msg_id]["text"]))
+                                sendMention(at, str(ret_), [contact.mid])
+                            elif msg_dict[msg_id]["contentType"] == 1:
+                                ret_ += "\nTipe : {}".format(str(Type._VALUES_TO_NAMES[msg_dict[msg_id]["contentType"]]))
+                                ret_ += "\nWait For Image"
+                                sendMention(at, str(ret_), [contact.mid])
+                                client.sendImage(at, msg_dict[msg_id]["path"])
+                                client.deleteFile(msg_dict[msg_id]["path"])
+                            elif msg_dict[msg_id]["contentType"] == 2:
+                                ret_ += "\nTipe : {}".format(str(Type._VALUES_TO_NAMES[msg_dict[msg_id]["contentType"]]))
+                                ret_ += "\nAku Gak Kuat, Biar Kamu Aja"
+                                sendMention(at, str(ret_), [contact.mid])
+                            elif msg_dict[msg_id]["contentType"] == 3:
+                                ret_ += "\nTipe : {}".format(str(Type._VALUES_TO_NAMES[msg_dict[msg_id]["contentType"]]))
+                                ret_ += "\nWait For Audio"
+                                sendMention(at, str(ret_), [contact.mid])
+                                client.sendAudio(at, msg_dict[msg_id]["path"])
+                                client.deleteFile(msg_dict[msg_id]["path"])
+                            elif msg_dict[msg_id]["contentType"] == 7:
+                                ret_ += "\nTipe : {}".format(str(Type._VALUES_TO_NAMES[msg_dict[msg_id]["contentType"]]))
+                                ret_ += "\nSticker ID : {}".format(str(msg_dict[msg_id]["contentMetadata"]["STKID"]))
+                                ret_ += "\nSticker Package ID : {}".format(str(msg_dict[msg_id]["contentMetadata"]["STKPKGID"]))
+                                ret_ += "\nSticker Version : {}".format(str(msg_dict[msg_id]["contentMetadata"]["STKVER"]))
+                                ret_ += "\nWait For View Image"
+                                sendMention(at, str(ret_), [contact.mid])
+                                client.sendImageWithURL(at, "https://stickershop.line-scdn.net/stickershop/v1/sticker/%7B%7D/ANDROID/sticker.png%22.format(str(msg_dict[msg_id][%22contentMetadata%22][%22STKID%22]))  )
+                            elif msg_dict[msg_id]["contentType"] == 13:
+                                ret_ += "\nTipe : {}".format(str(Type._VALUES_TO_NAMES[msg_dict[msg_id]["contentType"]]))
+                                ret_ += "\nContact MID : {}".format(str(msg_dict[msg_id]["contentMetadata"]["mid"]))
+                                ret_ += "\nWait For Contact"
+                                sendMention(at, str(ret_), [contact.mid])
+                                client.sendContact(at, msg_dict[msg_id]["contentMetadata"]["mid"])
+                            elif msg_dict[msg_id]["contentType"] == 14:
+                                ret_ += "\nTipe : {}".format(str(Type._VALUES_TO_NAMES[msg_dict[msg_id]["contentType"]]))
+                                ret_ += "\nNama File : {}".format(str(msg_dict[msg_id]["contentMetadata"]["FILE_NAME"]))
+                                ret_ += "\nUkuran : {}".format(str(msg_dict[msg_id]["contentMetadata"]["FILE_SIZE"]))
+                                ret_ += "\nWait For File"
+                                sendMention(at, str(ret_), [contact.mid])
+                                client.sendFile(at, msg_dict[msg_id]["path"], msg_dict[msg_id]["contentMetadata"]["FILE_NAME"])
+                                client.deleteFile(msg_dict[msg_id]["path"])
+                            else:
+                                ret_ += "\nTipe : {}".format(str(Type._VALUES_TO_NAMES[msg_dict[msg_id]["contentType"]]))
+                                ret_ += "\nTeks : {}".format(str(msg_dict[msg_id]["text"]))
+                                if "path" in msg_dict[msg_id]:
+                                    client.deleteFile(msg_dict[msg_id]["path"])
+                                sendMention(at, str(ret_), [contact.mid])
+                            del msg_dict[msg_id]
+                        else:
+                            client.sendMessage(at,"Unsend terdeteksi,Tapi saya tidak punya datanya")
+                    except Exception as error:
+                        client.sendMessage(at, "Detect Unsend Error\n" + str(error))
+                        logError(error)
+                except Exception as error:
+                    logError(error)
+                    traceback.print_tb(error.__traceback__)
+                    print ("[ INFO ] ERROR DETECTED TRYING TO RESTART")
+                    restartBot()
+#==============================================================================#
         if op.type == 55:
             print ("[ 55 ] NOTIFIED READ MESSAGE")                                   
             try:
