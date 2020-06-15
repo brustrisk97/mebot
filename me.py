@@ -147,7 +147,7 @@ def helpmessage():
                   "╠➥ Lurking" + "\n" + \
                   "║" + "\n" + \
                   "╠ 〘 Credits By: ©Nadya_TJ™  〙"+"\n"+\
-                  "╚═〘 Mdified By: iki doank  〙"
+                  "╚═〘 Modified By: iki doank  〙"
     return helpMessage
 
 def goperation(to, mid, firstmessage, lastmessage):
@@ -338,9 +338,6 @@ def lineBot(op):
                 elif text.lower() == 'clonecontact':
                     settings["copy"] = True
                     nadya.sendMessage(to, "Kirim Contact Yang Mau Di Copy")
-		elif text.lower() == 'unsend on':
-		    settings["unsendMessage"] == True
-		    nadya.sendMessage(to,"Unsendchat on")
 #==============================================================================#
                 elif text.lower() == 'me':
                     sendMessageWithMention(to, nadyaMID)
