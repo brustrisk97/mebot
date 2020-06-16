@@ -155,7 +155,7 @@ def goperation(to, mid, firstmessage, lastmessage):
         arrData = ""
         text = "%s " %(str(firstmessage))
         arr = []
-        mention = "@G0 "
+        mention = "@Iki "
         slen = str(len(text))
         elen = str(len(text) + len(mention) - 1)
         arrData = {'S':slen, 'E':elen, 'M':mid}
