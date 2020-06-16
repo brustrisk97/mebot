@@ -949,9 +949,9 @@ while True:
                 oepoll.setRevision(op.revision)
     except Exception as e:
         logError(e)
-#==============================================================================#
+	
 if op.type == 65:
-            if settings["unsendcht on"] == True:
+            if settings["unsendchat on"] == True:
                 try:
                     try:
                         at = op.param1
